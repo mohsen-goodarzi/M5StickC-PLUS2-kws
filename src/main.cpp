@@ -9,7 +9,7 @@
 #include <M5StickCPlus2.h>
 
 static constexpr const size_t record_number     = 200;
-static constexpr const size_t record_length     = 240;
+static constexpr const size_t record_length     = 240; // It is also the width of the screen.
 static constexpr const size_t record_size       = record_number * record_length;
 static constexpr const size_t record_samplerate = 16000;
 static int16_t prev_y[record_length];
@@ -53,7 +53,7 @@ void setup(void) {
 #if ESP_IDF_VERSION > ESP_IDF_VERSION_VAL(4, 1, 0)
         .communication_format =
             I2S_COMM_FORMAT_STAND_I2S,  // Set the format of the communication.
-#else                                   // 设置通讯格式
+#else
         .communication_format = I2S_COMM_FORMAT_I2S,
 #endif
         .intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
